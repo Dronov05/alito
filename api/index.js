@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 9000
+const port = 80
 
 app.get('/', (req, res) => {
     res.send('Я изменён в WebStorm и уже на сервере')
