@@ -10,4 +10,4 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-// время видео 29-44 установка vim, + еще нужно написать доку по связке гитхаб и сервера
+// время видео 51-13 установка react
