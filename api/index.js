@@ -3,7 +3,7 @@ const app = express()
 const port = 9001
 
 app.get('/', (req, res) => {
-    res.send('Я изменён в WebStorm и уже на сервере')
+    res.send('Я теперь backend!')
 })
 
 app.listen(port, () => {
