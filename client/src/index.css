@@ -26,18 +26,17 @@ padding-top: 10px;
 
 .sign-up__title{
   text-align: center;
+  margin-bottom: 50px;
 }
-.sign-up {
-  margin: 50px auto 0;
+.sign-up, .login {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.sign-up input {
-  max-width: 250px;
-  width: 100%;
+.sign-up input,  .login input {
   font-size: 18px;
   padding: 5px 10px;
   margin-bottom: 15px;
@@ -46,5 +45,20 @@ padding-top: 10px;
   border: 1px solid #939393;
   border-radius: 5px;
   display: block;
+}
+
+.message{
+  text-align: center;
+  color: red;
+}
+
+.button-sign-up, .button-login{
+  font-size: 16px;
+  background-color: #00aaff;
+  color: #fff;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 

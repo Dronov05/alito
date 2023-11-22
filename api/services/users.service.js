@@ -2,16 +2,35 @@ const dbConnect = require("./dbConnect")
 const mongoose = require("mongoose");
 const User = require('../models/User')
 
-async function addUserToDb() {
+async function save(user) {
     await dbConnect()
 
     const collection = mongoose.model('users')
 
+    const username = 'user' + new Date().getTime()
+
     await collection.create({
-        username: 'Анна',
-        password: '123456',
+        email: user.email,
+        password: user.password,
+        username: username,
         role: 'user'
     })
 }
 
-module.exports = {addUserToDb}
+async function getAllUsers() {
+    await dbConnect()
+    const collection = mongoose.model('users')
+
+    const users = await collection.find({})
+    return users
+}
+
+async function deleteAllUsers() {
+    await dbConnect()
+    const collection = mongoose.model('users')
+
+    const users = await collection.deleteMany({})
+
+}
+
+module.exports = {save, getAllUsers, deleteAllUsers}
