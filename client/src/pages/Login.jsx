@@ -1,11 +1,14 @@
 import Menu from "../components/menu";
 import {useState} from "react";
 import {func} from "prop-types";
+import {useNavigate} from "react-router-dom";
 
 export default function Login({server_host}) {
 
     const [user, setUser] = useState({email: '', password: ''})
     const [message, setMessage] = useState('')
+
+    const navigate = useNavigate()
 
 async function login() {
     setMessage('')
@@ -22,7 +25,12 @@ async function login() {
         }
     })
     const data = await res.json()
-    console.log(data)
+    if ( data.ok) {
+        setMessage('Сейчас будет выполнена переадресация')
+        navigate('/dashboard')
+    } else {
+        setMessage('Неверный логин или пароль')
+    }
 }
 
     function changeUser(name, value) {

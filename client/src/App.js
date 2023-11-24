@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Users from "./pages/Users";
+import Dashboard from "./pages/Dashboard";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                 <Route path='login' element={<Login server_host={server_host}/>}/>
                 <Route path='/signup' element={<SignUp/>}/>
                 <Route path='/users' element={<Users/>}/>
+                <Route path='/dashboard' element={<Dashboard server_host={server_host}/>}/>
             </Routes>
         </BrowserRouter>
     );

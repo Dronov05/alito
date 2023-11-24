@@ -1,11 +1,14 @@
 import Menu from "../components/menu";
 import {useState} from "react";
 import emailValidator from 'email-validator';
+import {useNavigate} from "react-router-dom";
 export default function SignUp() {
-
     const [user, setUser] = useState({email: '', password: ''})
     const [repeatPassword, setRepeatPassword] = useState('')
     const [message, setMessage] = useState('')
+    const [disabled, setDisabled] = useState(false)
+
+    const navigate = useNavigate()
 
     function changeUser(name, value) {
         setUser({
@@ -15,17 +18,21 @@ export default function SignUp() {
     }
 
     async function submitHandler() {
+        setDisabled(true)
         setMessage('')
         if (!user.email || !user.password || !repeatPassword) {
     setMessage('Необходимо заполнить все поля ниже')
+            setDisabled(false)
             return
         }
         if(repeatPassword !== user.password) {
             setMessage('Пароли не совпадают')
+            setDisabled(false)
             return
         }
         if(!emailValidator.validate(user.email)) {
             setMessage('Неверный email')
+            setDisabled(false)
             return
         }
 
@@ -42,7 +49,9 @@ export default function SignUp() {
 
         if(data.ok) {
             setMessage('Регистрация прошла успешно. Сейчас вы будете перенаправлены в личный кабинет')
+            navigate('/dashboard')
         } else {
+            setDisabled(false)
             setMessage('Пользователь с таким email уже зарегиститрован!')
         }
     }
@@ -65,7 +74,7 @@ export default function SignUp() {
                     <label className={'sign-up__label'}>Пароль ещё раз
                         <input type={'password'} onChange={e => setRepeatPassword(e.target.value)}/></label>
 
-                    <button className={'button-sign-up'} type={'button'} onClick={submitHandler}>Зарегистироваться</button>
+                    <button className={'button-sign-up'} type={'button'} onClick={submitHandler} disabled={disabled}>Зарегистироваться</button>
                 </form>
             </div>
 

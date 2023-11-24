@@ -62,3 +62,7 @@ padding-top: 10px;
   cursor: pointer;
 }
 
+.dashboard__title {
+  text-align: center;
+}
+
