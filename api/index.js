@@ -7,7 +7,6 @@ const logger = require('morgan');
 const sessions = require('express-session');
 const MongoStore = require('connect-mongo')
 
-
 app.use(cors({
     credentials: true,
     origin: ['http://localhost:3000', 'https://allspacex.ru']
