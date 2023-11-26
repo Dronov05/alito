@@ -16,9 +16,9 @@ app.use(cors({
 let mongoUrl
 
 if (process.env.NODE_ENV === "development") {
-    mongoUrl = "mongodb://admin5:" + process.env.MONGO_DEV_PASSWORD + '@localhost:27017/alito?authSource=alito'
+    mongoUrl = "mongodb://admin5:" + process.env.MONGO_DEV_PASSWORD + "@localhost:27017/alito?authSource=alito"
 } else {
-    mongoUrl = "mongodb://admin5:" + process.env.MONGO_PRODUCTION_PASSWORD + '@localhost:27017/alito?authSource=alito'
+    mongoUrl = "mongodb://admin5:" + process.env.MONGO_PRODUCTION_PASSWORD + "@localhost:27017/alito?authSource=alito"
 }
 
 app.use(sessions({

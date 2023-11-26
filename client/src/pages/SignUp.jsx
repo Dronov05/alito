@@ -1,8 +1,8 @@
-import Menu from "../components/menu";
+import Menu from "../components/Menu";
 import {useState} from "react";
 import emailValidator from 'email-validator';
 import {useNavigate} from "react-router-dom";
-export default function SignUp() {
+export default function SignUp({server_host}) {
     const [user, setUser] = useState({email: '', password: ''})
     const [repeatPassword, setRepeatPassword] = useState('')
     const [message, setMessage] = useState('')
@@ -58,7 +58,7 @@ export default function SignUp() {
 
     return (
         <div>
-            <Menu />
+            <Menu server_host={server_host}/>
             <div className={'container'}>
                 <h1 className={'sign-up__title'}>
                     Регистрация

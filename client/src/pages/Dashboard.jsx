@@ -1,12 +1,17 @@
-import Menu from "../components/menu";
+import Menu from "../components/Menu";
 import {useEffect, useState} from "react";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 
 export default function Dashboard({server_host}) {
 
     const [loading, setLoading] = useState(true)
     const [needAuth, setNeedAuth] = useState(false)
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({username: ''})
+    const [message, setMessage] = useState('')
+    const [disabled, setDisabled] = useState(false)
+
+    const navigate = useNavigate()
+    const navigateToMain = useNavigate()
 
     useEffect(() => {
         (async () => {
@@ -55,19 +60,54 @@ export default function Dashboard({server_host}) {
             <div className={'container dashboard__title'}>
                 <h3>Необходимо авторизоваться</h3>
                 <div><NavLink to={'/login'}>Перейти на форму входа</NavLink></div>
+                {/*{navigate('/login')}*/}
             </div>
         )
     }
 
+    function changeUser(name, value) {
+        setUser({
+            ...user,
+            [name]: value
+        })
+    }
+
+    async function save(){
+        setDisabled(true)
+        setMessage('')
+        const res = await fetch(server_host + "/users/update", {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const data = await res.json()
+        setDisabled(false)
+        if(data.ok) {
+            setMessage('Изменения сохранены')
+        } else {
+            setMessage('Ошибка')
+        }
+    }
+
     return (
         <div>
-            <Menu />
+            <Menu server_host={server_host}/>
             <div className={'container'}>
                 <h1>
                     Личный кабинет
                 </h1>
-                <div>{JSON.stringify(user)}</div>
-                <div><a href={server_host + "/users/logout"}>Выход</a></div>
+                <div>{message}</div>
+                <form className={'dashboard-form'}>
+                    <label>Username
+                        <input type={"text"} value={user.username} onChange={e => changeUser('username', e.target.value)}/>
+                    </label>
+                    <div>
+                        <button onClick={save} disabled={disabled}>Сохранить</button>
+                    </div>
+                </form>
             </div>
         </div>
     )

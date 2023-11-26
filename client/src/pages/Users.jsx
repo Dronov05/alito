@@ -1,7 +1,7 @@
-import Menu from "../components/menu";
+import Menu from "../components/Menu";
 import {useEffect, useState} from "react";
 
-export default function Users() {
+export default function Users({server_host}) {
 
     const [users, setUsers] = useState([])
 
@@ -22,7 +22,7 @@ export default function Users() {
 
     return (
         <div>
-            <Menu />
+            <Menu server_host={server_host}/>
             <div className={'container'}>
                 <h1>
                     Позьзователи

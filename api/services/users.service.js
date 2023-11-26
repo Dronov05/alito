@@ -48,4 +48,15 @@ async function getUserById(_id) {
     return user
 }
 
-module.exports = {save, getAllUsers, deleteAllUsers, getUserByEmailAndPassword, getUserById}
+async function updateUser(user){
+    await dbConnect()
+    const collection = mongoose.model('users')
+    const doc = await collection.findOne({_id: user._id})
+
+    doc['username'] = user.username
+
+    await doc.save()
+    return doc
+}
+
+module.exports = {save, getAllUsers, deleteAllUsers, getUserByEmailAndPassword, getUserById,updateUser}

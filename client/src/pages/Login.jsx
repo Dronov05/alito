@@ -1,4 +1,4 @@
-import Menu from "../components/menu";
+import Menu from "../components/Menu";
 import {useState} from "react";
 import {func} from "prop-types";
 import {useNavigate} from "react-router-dom";
@@ -42,7 +42,7 @@ async function login() {
 
     return (
         <div>
-            <Menu/>
+            <Menu server_host={server_host}/>
             <div className={'container'}>
                 <h1 className={'sign-up__title'}>
                     Вход

@@ -1,9 +1,9 @@
 const express = require('express')
-const {save, getAllUsers, deleteAllUsers, getUserByEmailAndPassword, getUserById} = require("../services/users.service")
+const {save, getAllUsers, deleteAllUsers, getUserByEmailAndPassword, getUserById, updateUser} = require("../services/users.service")
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.json({ok: true, users: '123'})
+    res.json({ok: true, users: "I'm users root route(path: '/')"})
 })
 
 router.get('/me', async (req, res) => {
@@ -63,15 +63,18 @@ router.post('/login', async (req, res) => {
     }
 })
 
-// router.get('/logout', async (req, res) => {
-//
-//     const domain = process.env.NODE_ENV === 'development' ? process.env.DEV_HOST : process.env.PROD_HOST
-//
-//     req.session.destroy()
-//     res.clearCookie('connect.sid', {path: "/"})
-//
-//     res.redirect(domain)
-// })
+router.get('/logout', async (req, res) => {
+
+    const domain = process.env.NODE_ENV === 'development' ? process.env.DEV_HOST : process.env.PROD_HOST
+    // const domain = process.env.NODE_ENV === 'development' ? process.env.PROD_HOST : process.env.DEV_HOST
+
+    req.session.destroy()
+    res.clearCookie('connect.sid', {path: "/"})
+
+    res.redirect(domain)
+
+
+})
 
 router.post('/check/auth', async (req, res) => {
 
@@ -83,6 +86,27 @@ router.post('/check/auth', async (req, res) => {
     const _id = req.session.user._id
 
     const user = await getUserById(_id)
+
+    if (user) {
+        res.json({ok: true, role: user.role})
+    } else {
+        res.json({ok: false})
+    }
+})
+
+router.post('/update', async (req, res) => {
+
+    if(!req.session.user) {
+        res.json({ok: false}).end()
+        return
+    }
+
+    const _id = req.session.user._id
+
+    const user = await getUserById(_id)
+
+    const updatedUser = await updateUser(req.body)
+    console.log({updatedUser})
 
     if (user) {
         res.json({ok: true})

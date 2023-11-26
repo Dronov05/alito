@@ -36,7 +36,7 @@ padding-top: 10px;
   align-items: center;
 }
 
-.sign-up input,  .login input {
+.sign-up input,  .login input, .dashboard-form input{
   font-size: 18px;
   padding: 5px 10px;
   margin-bottom: 15px;
@@ -64,5 +64,9 @@ padding-top: 10px;
 
 .dashboard__title {
   text-align: center;
+}
+
+.active{
+  color: #00aaff;
 }
 
