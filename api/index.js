@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "development") {
 } else {
     mongoUrl = "mongodb://admin5:" + process.env.MONGO_PRODUCTION_PASSWORD + "@localhost:27017/alito?authSource=alito"
 }
-
+console.log(process.env)
 app.use(sessions({
     secret: "thisismvtyrrcwkeyfhrqfgrfrty84fwir767",
     store: MongoStore.create({
