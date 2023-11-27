@@ -9,7 +9,6 @@ const sessions = require('express-session');
 const MongoStore = require('connect-mongo')
 
 
-
 // app.use(cors({
 //     credentials: true,
 //     origin: ['https://api.allspacex.ru', 'https://allspacex.ru']
