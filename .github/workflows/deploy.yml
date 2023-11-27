@@ -41,6 +41,7 @@ jobs:
             npm install
             npm run build
             pm2 restart client
+            pm2 save
   deploy-server:
     if: "contains(github.event.commits[0].message, '[need deploy server]')"
     needs: [update-files]
@@ -59,3 +60,4 @@ jobs:
             cd ~/alito/api
             npm install
             pm2 restart api
+            pm2 save
