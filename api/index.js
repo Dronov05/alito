@@ -9,11 +9,20 @@ const sessions = require('express-session');
 const MongoStore = require('connect-mongo')
 
 
-app.use(cors({
-    credentials: false,
-    // origin: ['http://localhost:3000', 'https://allspacex.ru']
-    origin: 'https://allspacex.ru'
-}));
+// app.use(cors({
+//     credentials: false,
+//     // origin: ['http://localhost:3000', 'https://allspacex.ru']
+//     origin: 'https://allspacex.ru'
+// }));
+const corsOptions = {
+    origin: 'https://allspacex.ru',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    maxAge: 600,
+};
+
+app.use(cors(corsOptions));
 
 let mongoUrl
 

@@ -52,8 +52,6 @@ router.post('/login', async (req, res) => {
     const user = req.body
     const doc = await getUserByEmailAndPassword(user)
 
-    console.log(req.session)
-
     if (doc) {
         req.session.user = {_id: doc._id}
         await req.session.save()

@@ -1,6 +1,5 @@
 import Menu from "../components/Menu";
 import {useState} from "react";
-import {func} from "prop-types";
 import {useNavigate} from "react-router-dom";
 
 export default function Login({server_host}) {
