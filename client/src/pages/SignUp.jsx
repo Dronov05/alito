@@ -36,7 +36,8 @@ export default function SignUp({server_host}) {
             return
         }
 
-        const res = await fetch(/*server_host +*/ 'http://localhost:9001/users/signup', {
+        const res = await fetch(server_host +'/users/signup', {
+        // const res = await fetch(/*server_host +*/ 'http://localhost:9001/users/signup', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(user),

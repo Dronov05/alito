@@ -16,7 +16,8 @@ async function login() {
         setMessage('Заполните оба поля')
     }
 
-    const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
+    const res = await fetch(server_host + '/users/login', {
+    // const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(user),

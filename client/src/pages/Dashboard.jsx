@@ -20,7 +20,8 @@ export default function Dashboard({server_host}) {
     }, [])
 
     async function checkAuth() {
-        const res = await fetch(/*server_host +*/ 'http://localhost:9001/users/check/auth', {
+        const res = await fetch(server_host + '/users/check/auth', {
+        // const res = await fetch(/*server_host +*/ 'http://localhost:9001/users/check/auth', {
             method: "POST",
             credentials: 'include'
         })
