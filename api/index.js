@@ -3,11 +3,12 @@ const express = require('express')
 const app = express()
 const port = 9001;
 const cors = require('cors')
+app.use(cors())
 const logger = require('morgan');
 const sessions = require('express-session');
 const MongoStore = require('connect-mongo')
 
-app.use(cors())
+
 
 // app.use(cors({
 //     credentials: true,
