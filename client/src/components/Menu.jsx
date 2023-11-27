@@ -13,7 +13,7 @@ export default function Menu({server_host}) {
         })()
     }, [])
     async function checkAuth() {
-        const res = await fetch(server_host + '/users/check/auth', {
+        const res = await fetch(/*server_host +*/ 'http://localhost:9001/users/check/auth', {
             method: "POST",
             credentials: 'include'
         })
@@ -35,7 +35,7 @@ export default function Menu({server_host}) {
             {authorised &&<span><NavLink to={'/dashboard'}>Личный кабинет</NavLink></span>}
             {!authorised &&<span><NavLink to={'/signup'}>Регистрация</NavLink></span>}
             {role === 'admin' &&<span><NavLink to={'/admin'}>Админ</NavLink></span>}
-            {authorised && <span><a href={server_host + '/users/logout'}>Выход</a></span>}
+            {authorised && <span><a href={/*server_host + */'http://localhost:9001/users/logout'}>Выход</a></span>}
         </div>
     )
 }

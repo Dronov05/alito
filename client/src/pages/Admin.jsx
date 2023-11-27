@@ -36,7 +36,7 @@ export default function Admin({server_host}) {
                         <td>role</td>
                         </thead>
                         <tbody>
-                            {users.map(user => <tr><td>{user.email}</td><td>{user.password}</td><td>{user.role}</td></tr>)}
+                            {users.map(user => <tr key="uniqueId4"><td key="uniqueId1">{user.email}</td><td key="uniqueId2">{user.password}</td><td key="uniqueId3">{user.role}</td></tr>)}
                         </tbody>
                     </table>
                 </div>
