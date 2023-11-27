@@ -10,7 +10,8 @@ const MongoStore = require('connect-mongo')
 app.use(cors({
     credentials: true,
     // origin: ['https://api.allspacex.ru', 'https://allspacex.ru']
-    origin: ['http://localhost:3000', 'https://allspacex.ru']
+    // origin: ['http://localhost:3000', 'https://allspacex.ru']
+    origin: ['https://allspacex.ru','http://localhost:3000']
 }));
 
 let mongoUrl
