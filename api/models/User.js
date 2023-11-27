@@ -20,5 +20,6 @@ const schema = new Schema({
     }
 }, {autoCreate: true})
 
+
 const User = mongoose.model('users', schema)
 module.exports = User
