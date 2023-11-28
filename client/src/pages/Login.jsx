@@ -18,20 +18,19 @@ async function login() {
     const res = await fetch(server_host + '/users/login', {
     // const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
         method: 'post',
-        mode: "no-cors",
         credentials: 'include',
         body: JSON.stringify(user),
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    // const data = await res.json();
-    // if ( data.ok) {
-    //     setMessage('Сейчас будет выполнена переадресация')
-    //     navigate('/dashboard')
-    // } else {
-    //     setMessage('Неверный логин или пароль')
-    // }
+    const data = await res.json();
+    if ( data.ok) {
+        setMessage('Сейчас будет выполнена переадресация')
+        navigate('/dashboard')
+    } else {
+        setMessage('Неверный логин или пароль')
+    }
 }
 
     function changeUser(name, value) {
