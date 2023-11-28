@@ -25,7 +25,7 @@ async function login() {
             'Content-Type': 'application/json'
         }
     })
-    const data = await res.json()
+    const data = await res.json();
     if ( data.ok) {
         setMessage('Сейчас будет выполнена переадресация')
         navigate('/dashboard')
