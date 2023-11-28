@@ -17,7 +17,7 @@ async function login() {
 
     const res = await fetch(server_host + '/users/login', {
     // const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
-        method: 'get',
+        method: 'post',
         credentials: 'include',
         body: JSON.stringify(user),
         headers: {
