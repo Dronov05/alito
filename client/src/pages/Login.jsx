@@ -18,6 +18,7 @@ async function login() {
     const res = await fetch(server_host + '/users/login', {
     // const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
         method: 'post',
+        mode: "no-cors",
         credentials: 'include',
         body: JSON.stringify(user),
         headers: {
