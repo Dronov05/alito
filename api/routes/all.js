@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-router.all("*", (req, res, next) => {
+router.all("https://allspacex.ru", (req, res, next) => {
 
 
     const domain = process.env.NODE_ENV === 'development' ? process.env.DEV_HOST : process.env.PROD_HOST
