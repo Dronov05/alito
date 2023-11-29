@@ -45,7 +45,6 @@ export default function SignUp({server_host}) {
                 'Content-Type': 'application/json'
             }
         })
-
         const data = await res.json()
 
         if(data.ok) {

@@ -6,21 +6,21 @@ const cors = require('cors')
 app.use(cors())
 
 
-
+app.use(cors({credentials: true, origin: 'https://allspacex.ru'}));
 // app.use(cors({
-//     credentials: false,
-//     // origin: ['http://localhost:3000', 'https://allspacex.ru']
-//     origin: 'https://allspacex.ru'
+//     credentials: true,
+//     origin: ['http://localhost:3000', 'https://allspacex.ru']
+//     // origin: 'https://allspacex.ru'
 // }));
-const corsOptions = {
-    origin: 'https://allspacex.ru',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    maxAge: 600,
-};
-
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: 'https://allspacex.ru',
+//     methods: ['GET', 'POST'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+//     maxAge: 600,
+// };
+//
+// app.use(cors(corsOptions));
 
 const logger = require('morgan');
 const sessions = require('express-session');
