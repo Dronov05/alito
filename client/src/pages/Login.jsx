@@ -21,6 +21,11 @@ async function login() {
         baseURL: "https://api.allspacex.ru",
         withCredentials: true,
         responseType: 'json',
+        data: JSON.stringify(user),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
     })
 
     const dataAxios = await resp.json()
