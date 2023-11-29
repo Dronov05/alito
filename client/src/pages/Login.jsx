@@ -1,6 +1,7 @@
 import Menu from "../components/Menu";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 export default function Login({server_host}) {
 
@@ -14,7 +15,16 @@ async function login() {
     if(!user.email || !user.password) {
         setMessage('Заполните оба поля')
     }
-
+    const axios = require('axios');
+    axios.get('https://myfakeapi.com/api/cars/name/Mitsubishi') // Возвращение обещаний используя get-запрос
+        .then((response) => { // Получение данных и их обработка
+            console.log(response.data);})
+        .catch((error) => { // Если запрос не будет выполнен, то ошибка выводится в терминал
+            console.error(error);});
+    // const res = axios.create({
+    //     baseURL: 'https://api.allspacex.ru/users/login',
+    //
+    // })
     const res = await fetch(server_host + '/users/login', {
     // const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
         method: 'post',
