@@ -15,46 +15,24 @@ async function login() {
     if(!user.email || !user.password) {
         setMessage('Заполните оба поля')
     }
-    const resp = axios({
-        url: '/users/login',
-        method: "post",
-        baseURL: "https://api.allspacex.ru",
-        withCredentials: true,
-        responseType: 'json',
-        data: JSON.stringify(user),
+
+    const res = await fetch(server_host + '/users/login', {
+    // const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
+        method: 'post',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify(user),
         headers: {
             'Content-Type': 'application/json'
         }
-
     })
-
-    const dataAxios = await resp.json()
-    if ( dataAxios.ok) {
+    const data = await res.json();
+    if ( data.ok) {
         setMessage('Сейчас будет выполнена переадресация')
         navigate('/dashboard')
     } else {
         setMessage('Неверный логин или пароль')
     }
-
-
-
-    // const res = await fetch(server_host + '/users/login', {
-    // // const res = await fetch(/*server_host + */'http://localhost:9001/users/login', {
-    //     method: 'post',
-    //     mode: 'cors',
-    //     credentials: 'include',
-    //     body: JSON.stringify(user),
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // })
-    // const data = await res.json();
-    // if ( data.ok) {
-    //     setMessage('Сейчас будет выполнена переадресация')
-    //     navigate('/dashboard')
-    // } else {
-    //     setMessage('Неверный логин или пароль')
-    // }
 }
 
     function changeUser(name, value) {
